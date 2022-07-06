@@ -45,6 +45,7 @@ createConnection(typeOrmConfig).then(async connection => {
     const dish11: Dish = new Dish();
     dish11.fullname_es = 'Tostadas';
     dish11.fullname_en = 'Toasts';
+    dish11.description = 'Tostadas con mermelada de distintos sabores: fresa, melocotón, ciruela.'
     dish11.prize = 2.40;
     dish11.meal_category = mealCat1saved;
     await Dish.save(dish11); 
@@ -52,6 +53,7 @@ createConnection(typeOrmConfig).then(async connection => {
     const dish12: Dish = new Dish();
     dish12.fullname_es = 'Croissants';
     dish12.fullname_en = 'Croissants';
+    dish12.description = 'Croissants a la plancha, con o sin mermelada'
     dish12.prize = 1.40;
     dish12.meal_category = mealCat1saved;
     await Dish.save(dish12);
@@ -59,6 +61,7 @@ createConnection(typeOrmConfig).then(async connection => {
     const dish13: Dish = new Dish();
     dish13.fullname_es = 'Magdalenas';
     dish13.fullname_en = 'Muffins';
+    dish12.description = 'Magdalenas de Cervera de Pisuerga'
     dish13.prize = 2.80;
     dish13.meal_category = mealCat1saved;
     await Dish.save(dish13);
@@ -67,7 +70,23 @@ createConnection(typeOrmConfig).then(async connection => {
     mealCat2.fullname_es = 'Tortillas';
     mealCat2.fullname_en = 'Omelettes';
     mealCat2.restaurant = seviSaved;
-    await MealCategory.save(mealCat2);
+    const mealCat2saved: MealCategory = await MealCategory.save(mealCat2);
+
+    const dish21: Dish = new Dish();
+    dish21.fullname_es = 'Jamón y queso';
+    dish21.fullname_en = 'Jam and Cheese';
+    dish21.description = 'Tortilla con Jamon de York y queso tranchete'
+    dish21.prize = 1.50;
+    dish21.meal_category = mealCat2saved;
+    await Dish.save(dish21);
+
+    const dish31: Dish = new Dish();
+    dish31.fullname_es = 'Morcilla';
+    dish31.fullname_en = '';
+    dish31.description = 'Tortilla con morcilla de Cervera'
+    dish31.prize = 1.50;
+    dish31.meal_category = mealCat2saved;
+    await Dish.save(dish31);
 
     const mealCat3: MealCategory = new MealCategory();
     mealCat3.fullname_es = 'Raciones';

@@ -5,7 +5,7 @@ var pgp = require('pg-promise')();
 require('dotenv').config();
 
 // Connect to PostgreSQL database
-var connectionString = 'postgres://'+process.env.DB_USERNAME+':'+process.env.DB_PASSWORD+'@'+process.env.DB_HOST+':5432/postgres';
+var connectionString = 'postgres://'+process.env.DB_USERNAME+':'+process.env.DB_PASSWORD+'@'+process.env.DB_HOST+':5432/postgres?ssl=false';
 var db = pgp(connectionString);
 db.connect();
 

@@ -21,6 +21,13 @@ export class Dish extends BaseEntity {
     fullname_en: string;
 
     @Column({
+        type: 'varchar',
+        length: 800,
+        nullable: true
+    })
+    description: string;
+
+    @Column({
         type: 'double precision',
         nullable: false,
         default: 0.0
