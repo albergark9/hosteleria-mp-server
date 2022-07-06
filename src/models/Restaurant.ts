@@ -17,10 +17,10 @@ export class Restaurant extends BaseEntity {
     })
     fullname: string;
 
-    @OneToMany(type => MealCategory, mealCategory => mealCategory.restaurant)
+    @OneToMany(type => MealCategory, meal_category => meal_category.restaurant)
     @JoinColumn({
         name: 'meal_categories'
     })
-    mealCategories: MealCategory[];
+    meal_categories: MealCategory[];
 
 }

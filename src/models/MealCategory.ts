@@ -21,7 +21,7 @@ export class MealCategory extends BaseEntity {
     })
     fullname_en: string;
 
-    @ManyToOne(type => Restaurant, restaurant => restaurant.mealCategories)
+    @ManyToOne(type => Restaurant, restaurant => restaurant.meal_categories)
     @JoinColumn({
         name: 'restaurant'
     })

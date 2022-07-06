@@ -28,7 +28,7 @@ export class Dish extends BaseEntity {
     prize: number;
 
 
-    @ManyToOne(type => MealCategory, mealCategory => mealCategory.dishes)
+    @ManyToOne(type => MealCategory, meal_category => meal_category.dishes)
     @JoinColumn({
         name: 'meal_category'
     })
