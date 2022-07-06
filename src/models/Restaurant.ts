@@ -18,6 +18,9 @@ export class Restaurant extends BaseEntity {
     fullname: string;
 
     @OneToMany(type => MealCategory, mealCategory => mealCategory.restaurant)
+    @JoinColumn({
+        name: 'meal_categories'
+    })
     mealCategories: MealCategory[];
 
 }

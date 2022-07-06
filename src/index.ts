@@ -3,7 +3,7 @@ import * as cors from 'cors';
 import * as logger from 'morgan';
 import { createConnection } from 'typeorm';
 import * as dotenv from 'dotenv';
-import { Restaurant } from './models';
+import { Dish, MealCategory, Restaurant } from './models';
 import api from './api';
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 
@@ -24,7 +24,9 @@ const typeOrmConfig: PostgresConnectionOptions = {
       rejectUnauthorized: false,
   },
   entities: [
-    Restaurant
+    Restaurant,
+    MealCategory,
+    Dish
   ]
 };
 
