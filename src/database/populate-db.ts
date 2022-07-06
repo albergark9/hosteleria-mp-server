@@ -34,7 +34,7 @@ createConnection(typeOrmConfig).then(async connection => {
     const sevi: Restaurant = new Restaurant();
     sevi.name = "Sevillano";
     sevi.fullname = "Sevillano";
-    const seviSaved: Restaurant = await Restaurant.save(sevi) as Restaurant;
+    var seviSaved: Restaurant = await Restaurant.save(sevi) as Restaurant;
 
     const mealCat1: MealCategory = new MealCategory();
     mealCat1.fullname_es = 'Desayunos';
@@ -92,7 +92,6 @@ createConnection(typeOrmConfig).then(async connection => {
     mealCat6.fullname_en = 'Burguers and Sandwitches';
     mealCat6.restaurant = seviSaved;
     await MealCategory.save(mealCat6);
-
 
   throw 'Population completed! You can kill this process.';
 

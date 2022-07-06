@@ -2,7 +2,6 @@ import { Request, Response } from 'express';
 import { Like } from 'typeorm';
 import { Restaurant } from '../../models';
 
-// get every user in the database
 async function getAllRestaurants(req: Request, res: Response, next: any): Promise<Response> {
 
   // processing the request (authentication process finished)
@@ -15,6 +14,17 @@ async function getAllRestaurants(req: Request, res: Response, next: any): Promis
   return res.status(200).send(items);
 }
 
+async function getRestaurantMenu(req: Request, res: Response, next: any): Promise<Response> {
+  if (req.params.restaurant_name === undefined) return res.status(400).send({ message: 'The restaurant field is empty.' });
+  const restaurant_name: string = req.params.restaurant_name as string;
+
+  var restaurant: Restaurant = await Restaurant.findOne(restaurant_name, { relations: ['mealCategories', 'mealCategories.dishes'] }) as Restaurant;
+  if (!restaurant) return res.status(401).send({ message: 'resturant menu not found.' });
+
+  return res.status(200).send({"restaurant":restaurant});
+}
+
 export {
-  getAllRestaurants
+  getAllRestaurants,
+  getRestaurantMenu
 };
