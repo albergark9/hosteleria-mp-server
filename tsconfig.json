@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": false,
+    "outDir": "./lib",
+    "preserveConstEnums": true,
+    "pretty": true,
+    "removeComments": true,
+    "target": "es6",
+    "lib": ["es6"],
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
+  },
+  "exclude": [
+    "./node_modules",
+    "./lib"
+  ],
+  "filesGlob": [
+    "src/**/*.ts"
+  ],
+
+  "atom": {
+    "rewriteTsconfig": false
+  }
+}
