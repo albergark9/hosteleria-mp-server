@@ -1,7 +1,7 @@
 import { createConnection } from 'typeorm';
 import * as dotenv from 'dotenv';
 import * as bcrypt from 'bcrypt';
-import {Restaurant } from '../models';
+import {MealCategory, Restaurant } from '../models';
 import { PostgresConnectionOptions } from 'typeorm/driver/postgres/PostgresConnectionOptions';
 
 
@@ -17,8 +17,12 @@ const typeOrmConfig: PostgresConnectionOptions = {
     database: process.env.DB_DATABASE,
     synchronize: true,
     logging: false,
+    ssl: {
+      rejectUnauthorized: false,
+    },
     entities: [
-      Restaurant
+      Restaurant,
+      MealCategory
     ]
 };
 
@@ -26,6 +30,16 @@ createConnection(typeOrmConfig).then(async connection => {
 
     const saltRounds = 12;
 
+    const sevi: Restaurant = new Restaurant();
+    sevi.name = "Sevillano";
+    sevi.fullname = "Sevillano";
+    const seviSaved: Restaurant = await Restaurant.save(sevi) as Restaurant;
+
+    const tortillas: MealCategory = new MealCategory();
+    tortillas.fullname = 'Tortillas';
+    tortillas.restaurant = seviSaved;
+    await MealCategory.save(tortillas);
 
   throw 'Population completed! You can kill this process.';
+
 }).catch(error => console.log(error));

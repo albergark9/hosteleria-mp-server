@@ -1,5 +1,6 @@
-import { Entity, Column, PrimaryColumn, JoinColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryColumn, JoinColumn, ManyToOne, OneToMany } from 'typeorm';
 import { BaseEntity } from 'typeorm/repository/BaseEntity';
+import { MealCategory } from './index';
 
 @Entity()
 export class Restaurant extends BaseEntity {
@@ -15,5 +16,8 @@ export class Restaurant extends BaseEntity {
         length: 300
     })
     fullname: string;
+
+    @OneToMany(type => MealCategory, mealCategory => mealCategory.restaurant)
+    mealCategories: MealCategory[];
 
 }
