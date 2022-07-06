@@ -50,7 +50,7 @@
     "reflect-metadata": "^0.1.13",
     "sequelize": "latest",
     "tsc": "^2.0.3",
-    "typeorm": "latest",
+    "typeorm": "0.3.7",
     "winston": "latest"
   },
   "devDependencies": {

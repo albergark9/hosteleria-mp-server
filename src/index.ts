@@ -1,7 +1,7 @@
 import * as express from 'express';
 import * as cors from 'cors';
 import * as logger from 'morgan';
-import { createConnection } from 'typeorm';
+import { DataSource } from 'typeorm';
 import * as dotenv from 'dotenv';
 import { Dish, MealCategory, Restaurant } from './models';
 import api from './api';
@@ -30,9 +30,9 @@ const typeOrmConfig: PostgresConnectionOptions = {
   ]
 };
 
+const AppDataSource = new DataSource(typeOrmConfig);
 
-
-createConnection(typeOrmConfig).then(async connection => {
+AppDataSource.initialize().then(async connection => {
   const port = process.env.PORT || 8080;
   const app: express.Express = express();
 
@@ -47,3 +47,5 @@ createConnection(typeOrmConfig).then(async connection => {
     console.log(`API REST running on port ${port}`);
   });
 }).catch(error => console.log(error));
+
+export {AppDataSource};
