@@ -17,6 +17,13 @@ export class Restaurant extends BaseEntity {
     })
     fullname: string;
 
+    @Column({
+        type: 'varchar',
+        length: 300,
+        nullable: true
+    })
+    picture_filename: string;
+
     @OneToMany(type => MealCategory, meal_category => meal_category.restaurant)
     @JoinColumn({
         name: 'meal_categories'

@@ -32,8 +32,9 @@ createConnection(typeOrmConfig).then(async connection => {
     const saltRounds = 12;
 
     const sevi: Restaurant = new Restaurant();
-    sevi.name = "Sevillano";
+    sevi.name = "sevillano";
     sevi.fullname = "Sevillano";
+    sevi.picture_filename="logoSevi.jpeg";
     var seviSaved: Restaurant = await Restaurant.save(sevi) as Restaurant;
 
     const mealCat1: MealCategory = new MealCategory();
