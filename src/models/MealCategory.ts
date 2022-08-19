@@ -21,6 +21,14 @@ export class MealCategory extends BaseEntity {
     })
     fullname_en: string;
 
+
+    @Column({
+        type: 'varchar',
+        length: 80,
+        nullable:true
+    })
+    time: string;
+
     @ManyToOne(type => Restaurant, restaurant => restaurant.meal_categories)
     @JoinColumn({
         name: 'restaurant'
